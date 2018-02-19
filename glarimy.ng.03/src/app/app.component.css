@@ -1,0 +1,11 @@
+.book {
+    background-color: #0BB;
+    color: white;
+    padding: 5px;
+    float: left;
+    margin: 5px;
+}
+
+.book .title {
+    background-color: black;
+}

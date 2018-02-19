@@ -1,0 +1,87 @@
+<div>
+  <h1>{{title}}</h1>
+  <hr/>
+  <div class='form'>
+    <h2>Search For Books</h2>
+    <div>
+      ISBN
+      <input [(ngModel)]='key'>
+      <button (click)='findBook(key)'>Find Book</button>
+      <button (click)="clear()">Clear</button>
+    </div>
+  </div>
+  <div *ngIf='searchResults'>
+    <h2>Search Results</h2>
+    <div class='book' *ngIf='book'>
+      <table>
+        <tr class='title'>
+          <td>Title</td>
+          <td>{{book.title}}</td>
+        </tr>
+        <tr>
+          <td>ISBN</td>
+          <td>{{book.isbn}}</td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>Rs. {{book.price}}</td>
+        </tr>
+        <tr>
+          <td>Reference Book</td>
+          <td>{{book.reference ? 'Yes' : 'No'}}</td>
+        </tr>
+        <tr>
+          <td>Publisher</td>
+          <td>{{book.publisher.name}} [Phone: {{book.publisher.phone}}]</td>
+        </tr>
+        <tr>
+          <td>Authors</td>
+          <td>
+            <ul>
+              <li *ngFor='let author of book.authors'>
+                {{author.name}} - {{author.email}}
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div *ngIf='!searchResults'>
+    <h2>Most Popular Books</h2>
+    <div class='book' *ngFor='let book of libraryService.list()'>
+      <table>
+        <tr class='title'>
+          <td>Title</td>
+          <td>{{book.title}}</td>
+        </tr>
+        <tr>
+          <td>ISBN</td>
+          <td>{{book.isbn}}</td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>Rs. {{book.price}}</td>
+        </tr>
+        <tr>
+          <td>Reference Book</td>
+          <td>{{book.reference ? 'Yes' : 'No'}}</td>
+        </tr>
+        <tr>
+          <td>Publisher</td>
+          <td>{{book.publisher.name}} [Phone: {{book.publisher.phone}}]</td>
+        </tr>
+        <tr>
+          <td>Authors</td>
+          <td>
+            <ul>
+              <li *ngFor='let author of book.authors'>
+                {{author.name}} - {{author.email}}
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

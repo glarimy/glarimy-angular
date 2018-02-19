@@ -1,0 +1,39 @@
+<div>
+  <h1>{{title}}</h1>
+  <hr/>
+  <h2>Most Popular Books</h2>
+  <div class='book' *ngFor='let book of books'>
+    <table>
+      <tr class='title'>
+        <td>Title</td>
+        <td>{{book.title}}</td>
+      </tr>
+      <tr>
+        <td>ISBN</td>
+        <td>{{book.isbn}}</td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td>Rs. {{book.price}}</td>
+      </tr>
+      <tr>
+        <td>Reference Book</td>
+        <td>{{book.reference ? 'Yes' : 'No'}}</td>
+      </tr>
+      <tr>
+        <td>Publisher</td>
+        <td>{{book.publisher.name}} [Phone: {{book.publisher.phone}}]</td>
+      </tr>
+      <tr>
+        <td>Authors</td>
+        <td>
+          <ul>
+            <li *ngFor='let author of book.authors'>
+              {{author.name}} - {{author.email}}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
